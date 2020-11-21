@@ -10,6 +10,24 @@ client.on("ready", () => {
   client.user.setPresence({ activity : { name: 'w!help' }, status: 'dnd' });
 })
 
+client.on('message', message => {
+  if (message.content === 'w!emoji' ||message.content === 'w!emojis' ) {
+
+    const embed = new MessageEmbed()
+      .setTitle('Commands')
+      .setColor(0xff0000)
+      .setDescription(`\`starter emojis\`
+
+     \`make sure to give me MANAGE_WEBHOOKS To send emojis\`
+
+     \`:verifytick:\`
+     \`:partyblob:\`
+     \`:nitro:\`
+     \`:boost:\`
+     \`:wump:\`  `)
+    message.channel.send(embed);
+  }
+}); 
 
 
 
