@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
-const { TOKEN,prefix} = require("./config.json")
+const { TOKEN,prefix} = require(process.env);
 
 
 client.on("ready", () => {
@@ -81,8 +81,7 @@ client.on("message", async (message) => {
 })
 
 
-client.login("NzY5ODUyODQwMTI1OTIzMzU4"+TOKEN);
-
+bot.login(process.env.TOKEN);
 
 //--------------------------------------------------- F U N C T I O N S --------------------------------------
 
