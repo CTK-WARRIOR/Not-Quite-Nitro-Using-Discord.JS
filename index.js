@@ -1,37 +1,21 @@
-const { TOKEN,} = require("./config.json")
-
 const { Client, MessageEmbed } = require('discord.js');
 const client = new Client();
+const { TOKEN,prefix} = require("./config.json")
 
 
 client.on("ready", () => {
-    console.log("[--------------------- R E A D Y ---------------------]");
+    console.log("Wumpus Is Ready :D");
   client.user.setUsername("Wumpus");
   client.user.setPresence({ activity : { name: 'w!help' }, status: 'dnd' });
 })
 
-client.on('message', message => {
-  if (message.content === 'w!emoji' ||message.content === 'w!emojis' ) {
-
-    const embed = new MessageEmbed()
-      .setTitle('Commands')
-      .setColor(0xff0000)
-      .setDescription(`\`starter emojis\`
-
-     \`make sure to give me MANAGE_WEBHOOKS To send emojis\`
-
-     \`:verifytick:\`
-     \`:partyblob:\`
-     \`:nitro:\`
-     \`:boost:\`
-     \`:wump:\`  `)
-    message.channel.send(embed);
-  }
-}); 
-
-
 
 client.on('message', message => {
+if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+const args = message.content.slice(prefix.length).trim().split(' ');
+const command = args.shift().toLowerCase();
+// the rest of your code
   if (message.content === 'w!emoji' ||message.content === 'w!emojis' ) {
 
     const embed = new MessageEmbed()
@@ -97,7 +81,7 @@ client.on("message", async (message) => {
 })
 
 
-client.login("Nz"+"Y5ODUyODQwMTI1OTIzMzU4.X5VDVA.lk2YynGO0z7pk6_lImiA5ES37yo")
+client.login("NzY5ODUyODQwMTI1OTIzMzU4"+TOKEN);
 
 
 //--------------------------------------------------- F U N C T I O N S --------------------------------------
@@ -126,3 +110,4 @@ function strpos(haystack, needle, offset) {
   var i = (haystack + '').indexOf(needle, (offset || 0));
   return i === -1 ? false : i;
 }
+
